@@ -21,7 +21,7 @@ public class PrintStats {
 		if(Class.Class=="Rogue") {
 			RogueClass.RogueTraits();
 		}
-		if(Class.mainHandWeapon=="Rapier") {
+		if(Class.mainHandWeapon==Weapons.Rapier) {
 			System.out.println("Mobility: +4 AC against opportunity attacks from movement");
 			if(Class.lvl>=19) {
 				System.out.println("Deadly Stroke: this creature deals x2 damage and 1 CON bleed against flat-footed creatures");
@@ -40,7 +40,7 @@ public class PrintStats {
 		else {
 				ACprint = ACprint+"+"+FighterClass.armorTraining()+" Dex, +"+(BaseRules.calcArmorBonus(Class.armorType))+" Armor";
 		}
-		if(Class.offHandWeapon == "Shield") {
+		if(Class.offHandWeapon == Weapons.Shield) {
 				ACprint = ACprint+", +2 Shield";
 		}
 		if(Feats.dodge>0) {

@@ -10,7 +10,7 @@ public class Feats {
 		public static void ClassFeats() {
 			 PowerATK();
 			 WeaponFocus();
-			 if(Class.offHandWeapon=="Shield") {
+			 if(Class.offHandWeapon==Weapons.Shield) {
 				 ShieldFeats();
 			 }
 			 VitalStrike();
@@ -33,15 +33,15 @@ public class Feats {
 			 int powerATK = 2 + (Class.BAB/4)*2;
 			 String cleaveText = "";
 			 Class.atkBonus = Class.atkBonus-powerATK/2;
-			 if(Class.lvl>=2&&Class.mainHandWeapon != "Rapier") {
-				 if(Class.mainHandWeapon == "Greatsword") {
+			 if(Class.lvl>=2&&Class.mainHandWeapon != Weapons.Rapier) {
+				 if(Class.mainHandWeapon == Weapons.Greatsword) {
 					 powerATK = powerATK*2;
 				 }
 			 }
 			 else {
 				 powerATK = 0;
 			 }
-			 if(BaseRules.WeaponDamageType(Class.mainHandWeapon)=="Slashing") {
+			 if(Class.mainHandWeapon.DMGtype==WeaponDamageType.Slashing) {
 				 if(Class.lvl>=5) {
 					 cleaveText = "\n If the first attack hits, do an extra attack against another enemy adjacent to the first.";
 				 }
@@ -73,7 +73,7 @@ public class Feats {
 			 if(Class.lvl>=13) {
 				 Class.atkBonus++;
 			 }
-			 if(Class.mainHandWeapon=="Rapier") {
+			 if(Class.mainHandWeapon==Weapons.Rapier) {
 				 if(Class.lvl>=5) {
 					 dazzleText = "Dazzling Display: Do an intimidate check against all enemies within 30 feet.";
 				 }
@@ -81,7 +81,7 @@ public class Feats {
 					 dazzleText = dazzleText+ "\n Demoralized creatures are also flat-footed for until the end of their next turn.";
 				 }
 			 }
-			 if(Class.lvl>=17&&Class.mainHandWeapon=="Greatsword") {
+			 if(Class.lvl>=17&&Class.mainHandWeapon==Weapons.Greatsword) {
 				 int penet = 5;
 				 if(Class.lvl>=19) {
 					 penet+=5;
@@ -98,7 +98,7 @@ public class Feats {
 			 }
 		 }
 		 public static void Dodge() {
-			 if(Class.lvl>=2&&Class.mainHandWeapon=="Rapier") {
+			 if(Class.lvl>=2&&Class.mainHandWeapon==Weapons.Rapier) {
 				 dodge += 1 + Class.BAB/4;
 				 if(Class.lvl>=8) {
 					 dodge++;
@@ -118,10 +118,10 @@ public class Feats {
 		 }
 		 public static String Slam() {
 			 if(Class.lvl>=18) {
-				 if(Class.offHandWeapon=="Shield") {
+				 if(Class.offHandWeapon==Weapons.Shield) {
 					 return ". On hit, do a Bull Rush maneuver";
 				 }
-				 else if(Class.mainHandWeapon=="Greatsword"){
+				 else if(Class.mainHandWeapon==Weapons.Greatsword){
 					 return "\n On crit, do a Bull Rush maneuver. ";
 				 }
 				
@@ -146,13 +146,13 @@ public class Feats {
 			 if(Class.lvl>=6) {
 				 List <String> maneuvers = new ArrayList<String>();
 				 String text = "";
-				 if(Class.offHandWeapon=="Shield"||Class.mainHandWeapon=="Greatsword") {
+				 if(Class.offHandWeapon==Weapons.Shield||Class.mainHandWeapon==Weapons.Greatsword) {
 					 maneuvers.add("Bull Rush");
 				 }
-				 if(Class.mainHandWeapon=="Greatsword") {
+				 if(Class.mainHandWeapon==Weapons.Greatsword) {
 					 maneuvers.add("Sunder");
 				 }
-				 if(Class.mainHandWeapon=="Rapier") {
+				 if(Class.mainHandWeapon==Weapons.Rapier) {
 					 maneuvers.add("Trip");
 					 if(Class.lvl>=7) {
 						 maneuvers.add("Disarm");

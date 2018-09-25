@@ -91,26 +91,6 @@ public class BaseRules {
 			return AC;
 		}
 	}
-	// weapon damage calculate method
-	public static String WeaponDamageType(String weaponName) {
-		if(weaponName.equals("Dagger")||weaponName.equals("Halberd")||weaponName.equals("Longbow")||weaponName.equals("Rapier")) {
-			return "Piercing";
-		}
-		else if(weaponName.equals("Longsword")||weaponName.equals("Greatsword")||weaponName.equals("Greataxe")) {
-			return "Slashing";
-		}
-		else {
-			return "Bludgeoning";
-		}
-	}
-	public static void offHandWeapon(String weaponName, int AC) {
-		if(weaponName == "Shield") {
-			AC = AC+2;
-		}
-		else {
-			WeaponDamage(weaponName);
-		}
-	}
 	public static int MainScoreIncrease() {
 		if (Class.lvl >= 16) {
 			return 19;
@@ -148,7 +128,7 @@ public class BaseRules {
 		}
 	}
 	public static int AtkBonusModifier() {
-		if(Class.mainHandWeapon == "Longbow"||Class.mainHandWeapon == "Rapier"||Class.mainHandWeapon == "Shortsword") {
+		if(Class.mainHandWeapon == Weapons.Rapier||Class.mainHandWeapon == Weapons.Shortsword) {
 			return 1;
 		}
 		else {
@@ -192,30 +172,30 @@ public class BaseRules {
 		String multiATK = "";
 		String mainHandAction = Class.mainHandWeapon+": ";
 		String offHandAction = "";
-		if(Class.offHandWeapon==null||(Class.offHandWeapon=="Shield"&&Feats.ShieldBash()==false)) {
-			mainHandAction = mainHandAction+"+"+Class.atkBonus+" to hit, "+(Class.WeaponDamage)+" "+BaseRules.WeaponDamageType(Class.mainHandWeapon);
+		if(Class.offHandWeapon==null||(Class.offHandWeapon==Weapons.Shield&&Feats.ShieldBash()==false)) {
+			mainHandAction = mainHandAction+"+"+Class.atkBonus+" to hit, "+(Class.WeaponDamage)+" "+Class.mainHandWeapon.DMGtype;
 		}
-		else if(Class.offHandWeapon=="Shield"&&Feats.ShieldBash()==true) {
+		else if(Class.offHandWeapon==Weapons.Shield&&Feats.ShieldBash()==true) {
 			multiATK = "Multiattack: "+Class.mainHandWeapon+" + Shield Bash";
-			mainHandAction = mainHandAction+"+"+(Class.atkBonus-Class.MainWeaponPenalty)+" to hit, "+(Class.WeaponDamage)+" "+BaseRules.WeaponDamageType(Class.mainHandWeapon);
+			mainHandAction = mainHandAction+"+"+(Class.atkBonus-Class.MainWeaponPenalty)+" to hit, "+(Class.WeaponDamage)+" "+Class.mainHandWeapon.DMGtype;
 			offHandAction = "Shield Bash: "+"+"+(Class.atkBonus-Class.OffWeaponPenalty)+" to hit, "+(2+BaseRules.calcMod(Class.STR)+" Bludgeoning"+Feats.ImprovedCrit());
 		}
 		else {
 			multiATK = "Multiattack: "+Class.mainHandWeapon+" + "+Class.offHandWeapon;
-			mainHandAction = mainHandAction+"+"+(Class.atkBonus-Class.MainWeaponPenalty)+" to hit, "+(Class.WeaponDamage)+" "+BaseRules.WeaponDamageType(Class.mainHandWeapon);
-			offHandAction = Class.offHandWeapon+": "+"+"+(Class.atkBonus-Class.OffWeaponPenalty)+" to hit, "+(Class.WeaponDamage)+" "+BaseRules.WeaponDamageType(Class.mainHandWeapon);
+			mainHandAction = mainHandAction+"+"+(Class.atkBonus-Class.MainWeaponPenalty)+" to hit, "+(Class.WeaponDamage)+" "+Class.mainHandWeapon.DMGtype;
+			offHandAction = Class.offHandWeapon+": "+"+"+(Class.atkBonus-Class.OffWeaponPenalty)+" to hit, "+(Class.WeaponDamage)+" "+Class.mainHandWeapon.DMGtype;
 		}
 		if(Class.crit!="20") {	
 			mainHandAction = mainHandAction+". Class.crit "+Class.crit;	
 			if(offHandAction!="") {offHandAction = offHandAction+". Class.crit "+Class.crit;}
 		}
-		if(Class.mainHandWeapon=="Rapier"&&Class.lvl>=9) {
+		if(Class.mainHandWeapon==Weapons.Rapier&&Class.lvl>=9) {
 			multiATK =  "Multiattack: "+Class.mainHandWeapon + " + move "+Class.speed+" feet";
 		}
 		if(multiATK!="") {		System.out.println(multiATK);	}
 		mainHandAction = mainHandAction+Class.WeaponAtributes;
 		System.out.println(mainHandAction);
-		if(Class.mainHandWeapon!= null ||Class.mainHandWeapon!= "Shield") {
+		if(Class.mainHandWeapon!= null ||Class.mainHandWeapon!= Weapons.Shield) {
 			System.out.println(offHandAction);
 		}
 		if(Feats.dazzleText!="") {

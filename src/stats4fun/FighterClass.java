@@ -60,7 +60,7 @@ public class FighterClass {
 		if(Class.lvl>1) {
 			System.out.println("Bravery: +"+(1+Class.lvl/4)+" against fear");
 		}
-		if(Class.mainHandWeapon=="Greatsword"&&Class.lvl>=12) {
+		if(Class.mainHandWeapon==Weapons.Greatsword&&Class.lvl>=12) {
 			System.out.println("Improved Sunder: If this creature attempts a sunder and is succesful, deal "+Class.WeaponDamage+" damage to the weapon's wielder");
 		}
 	}

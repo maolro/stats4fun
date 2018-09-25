@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Class {
 		public static String Class = "Fighter";
-		public static Weapon mainHandWeapon = Weapons.Greatsword();
-		public static String offHandWeapon = null;
+		public static Weapon mainHandWeapon = Weapons.Greatsword;
+		public static Weapon offHandWeapon = null;
 		public static String armorType = "Plate";
 		public static String crit = "20";
 		public static int lvl = 20;
@@ -43,9 +43,8 @@ public class Class {
 		HP = (HD + BaseRules.calcMod(CON)) * lvl;
 		AC = AC + Feats.dodge;
 		atkBonus = BAB+BaseRules.calcMod(BaseRules.AtkBonusModifier());
-		WeaponDamage = (BaseRules.WeaponDamage(mainHandWeapon)+BaseRules.calcMod(STR));
-		if(offHandWeapon=="Shield") {	
-			AC = AC+ShieldBonus;
+		if(offHandWeapon==Weapons.Shield) {	
+			AC = AC+2;
 		}
 		Feats.ClassFeats();
 		PrintStats.PrintStats();
