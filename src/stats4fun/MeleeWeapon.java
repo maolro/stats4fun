@@ -3,16 +3,18 @@ package stats4fun;
 import java.util.List;
 
 public class MeleeWeapon extends Weapon {
-		public MeleeWeapon (int damage, int critRange, int critMult, WeaponDamageType DMGtype)
+		public MeleeWeapon (String weaponName, int damage, int critRange, int critMult, WeaponDamageType DMGtype)
 		{
+			this.weaponName = weaponName;
 			this.damage = damage;
 			this.critRange = critRange;
 			this.critMult = critMult;
 			this.DMGtype = DMGtype;
 		}
 		
-		public MeleeWeapon (int damage, WeaponDamageType DMGtype)
+		public MeleeWeapon (String weaponName, int damage, WeaponDamageType DMGtype)
 		{
+			this.weaponName = weaponName;
 			this.damage = damage;
 			this.critRange = 20;
 			this.critMult = 2;

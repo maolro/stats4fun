@@ -8,6 +8,7 @@ public abstract class Weapon {
 	int critMult = 2;
 	WeaponDamageType DMGtype;
 	List<String> special;
+	String weaponName;
 	
 	public abstract int CalcDamage(boolean main);
 }

@@ -170,7 +170,7 @@ public class BaseRules {
 	}
 	public static void printActions() {
 		String multiATK = "";
-		String mainHandAction = Class.mainHandWeapon+": ";
+		String mainHandAction = Class.mainHandWeapon.weaponName+": ";
 		String offHandAction = "";
 		if(Class.offHandWeapon==null||(Class.offHandWeapon==Weapons.Shield&&Feats.ShieldBash()==false)) {
 			mainHandAction = mainHandAction+"+"+Class.atkBonus+" to hit, "+(Class.WeaponDamage)+" "+Class.mainHandWeapon.DMGtype;

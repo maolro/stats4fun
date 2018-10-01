@@ -12,7 +12,7 @@ public class PrintStats {
 		System.out.println("Saves: Fort +"+Class.Fort+", Ref +"+Class.Ref+", Will +"+Class.Will);
 		BaseRules.Skills();
 		System.out.println("Initiative: +"+Class.Init);
-		System.out.println("CMB: +"+Class.CMB+Feats.ImpManeuver()+"  CMD: "+Class.CMD+"   ");
+		System.out.println("CMB: +"+Class.CMB+Feats.maneuvers+"  CMD: "+Class.CMD+"   ");
 		if(Class.DR!="") {		System.out.println("DR: "+Class.DR);	}
 		System.out.println("______________________________");
 		if(Class.Class=="Fighter") {
